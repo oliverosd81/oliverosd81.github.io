@@ -20,6 +20,13 @@
         text-transform: capitalize;
     }
 
+    .content {
+        position: absolute;
+        top: 65%;
+        left: 8%;
+        transform: translateY(-50%);
+    }
+
     .about img {
         height: auto;
         width: 330px;

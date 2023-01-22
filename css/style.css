@@ -9,6 +9,7 @@
 .hero {
     height: 100vh;
     width: 100%;
+    background: black;
     background-image: url("/Mi-Portafolios-Website-2023/img/background_img1.png");
     background-size: cover;
     background-position: center;
@@ -280,6 +281,7 @@ h5 {
     width: 100%;
     height: auto;
     padding: 100px 0px;
+    background: black;
     background-image: url("/Mi-Portafolios-Website-2023/img/skills_background_dark.jpg");
     background-size: cover;
     background-position: center;
