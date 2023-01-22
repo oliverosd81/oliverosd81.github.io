@@ -1,0 +1,8 @@
+@media (max-width: 700px) and (orientation: landscape) {
+
+    .importante {
+        /* Opción interesante para establecer valores a pantallas en landscape mode */
+        font-style: normal;
+    }
+
+}
