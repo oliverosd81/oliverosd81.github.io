@@ -75,7 +75,7 @@ nav ul li a:hover {
     z-index: 10001;
     cursor: pointer;
     position: absolute;
-    top: -50%;
+    top: -150%;
 }
 
 .open {
