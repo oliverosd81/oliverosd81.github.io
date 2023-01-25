@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="css/855.css">
     <link rel="stylesheet" href="css/640.css">
     <link rel="stylesheet" href="css/740.css">
+    <link rel="stylesheet" href="css/animations.css">
 
     <link rel="preconnect" href="https://fonts.google.com/css2?family=Josefin+Sans:ital,wght@0,100;
     0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
@@ -54,7 +55,7 @@
 <body>
 
     <!-- Main Section -->
-    <div class="hero" id="home">
+    <div class="hero slide-in-bck-center" id="home">
         <nav>
             <h2 class="logo">Welcome to <span>My Portfolio</span></h2>
             <ul class="menu-i">
@@ -68,7 +69,7 @@
             <a href="#"><div class="bx bx-menu" id="menu-icon"></div></a>
         </nav>
 
-        <div class="content">
+        <div class="content text-focus-in">
             <h4>Hello World! My name is</h4>
             <h1>Daniel <span>Oliveros</span></h1>
             <h3>I'm a Web Developer based in Madrid, Spain</h3>
@@ -85,8 +86,8 @@
     <!-- About Me Section -->
     <section class="about" id="aboutme">
         <div class="main">
-            <img src="img/profile_pic_399.jpg" alt="Daniel Oliveros, Web Developer">
-            <div class="about-text">
+            <img src="img/profile_pic_399.jpg" alt="Daniel Oliveros, Web Developer" id="profile-pic">
+            <div class="about-text" id="main-about">
                 <h2>About Me</h2>
                 <h5>Developer <span>& Designer</span></h5>
                 <p>
@@ -102,7 +103,7 @@
 
     <!-- My Services Section -->
     <div class="services" id="webservices">
-        <div class="tittle">
+        <div class="tittle hidden" id="tittle-id">
             <h2>Web Services</h2>
         </div>
 
