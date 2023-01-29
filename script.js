@@ -7,40 +7,23 @@ menu.onclick = () => {
     navbar.classList.toggle('open');
 }
 
-// ANIMATIONS //
-// About me Section //
-window.onscroll = () => {
-  if (document.documentElement.scrollTop > 230) {
-    document.getElementById("profile-pic").className = "fade-in-left";
-    document.getElementById("main-about").className = "about-text fade-in-right";
-  } else {
+// // ANIMATIONS //
+
+// trigger the animations when the user scrolls down the page
+
+window.onscroll = function() {
+  var scrollPos = window.pageYOffset;
+  
+  if (scrollPos >= 0 && scrollPos < 230) {
     document.getElementById("profile-pic").className = "hidden";
     document.getElementById("main-about").className = "hidden";
+  } else if (scrollPos >= 230 && scrollPos < 460) {
+    document.getElementById("profile-pic").className = "fade-in-left";
+    document.getElementById("main-about").className = "about-text fade-in-right";
+    document.getElementById("box-id").className = "hidden";
+  } else if (scrollPos >= 460 && scrollPos < 690) {
+    console.log("Actived >= 460px");
+    document.getElementById("box-id").className = "box scale-in-center";
   }
-}
-
-// Web Services //
-// window.onscroll = () => {
-//     if (document.documentElement.scrollTop > 500) {
-//       document.getElementById("tittle-id").className = "fade-in-left";
-//     } else {
-//       document.getElementById("tittle-id").className = "hidden";
-//     }
-// }
-
-// window.onscroll = function() {animation()};
-
-// function animation() {
-//     if (document.body.scrollTop > 230 || document.documentElement.scrollTop > 230) {
-//         document.getElementById("profile-pic").className = "fade-in-left";
-//         document.getElementById("main-about").className = "about-text fade-in-right";
-
-//     } else if (document.body.scrollTop > 550 || document.documentElement.scrollTop > 550) {
-//         document.getElementById("tittle-id").className = "tittle scale-in-center";
-//     }
-
-//     else {
-//         document.getElementById("profile-pic").className = "hidden";
-//         document.getElementById("main-about").className = "hidden";
-//     }
-// }
+  // continúa con el resto de las posiciones y animaciones
+};
