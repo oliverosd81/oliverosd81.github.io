@@ -1,13 +1,13 @@
 let menu = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.hero nav ul');
 
-// menu sandwich operation //
+// menu sandwich operation
 menu.onclick = () => {
     menu.classList.toggle('bx-x');
     navbar.classList.toggle('open');
 }
 
-// check for background-image
+// check for background-image load
 window.onload = function() {
 
   var images = document.querySelectorAll('.hero');
@@ -21,9 +21,8 @@ window.onload = function() {
     image.onload = function() {
       imagesLoaded++;
       if (imagesLoaded === images.length) {
-        // All background-image loaded correctly
-        console.log('Todas las imágenes han cargado correctamente');
-
+        // All background-image were loaded correctly
+        // start home animation
         document.getElementById("home").className = "hero slide-in-bck-center";
         document.getElementById("content-id").className = "content text-focus-in";
 
@@ -48,7 +47,6 @@ window.onload = function() {
             document.getElementById("box-skills-4").className = "hidden";
 
           } else if (scrollPos >= 2100 && scrollPos < 2920) {  // Skills Section
-            console.log("Skills Section");
             document.getElementById("box-skills-1").className = "box-skills fade-in-bottom";
             document.getElementById("box-skills-2").className = "box-skills fade-in-bottom";
             document.getElementById("box-skills-3").className = "box-skills fade-in-bottom";
