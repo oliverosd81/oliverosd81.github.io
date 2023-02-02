@@ -8,7 +8,7 @@ menu.onclick = () => {
 }
 
 // check for background-image load
-window.onload = function() {
+window.onload = () => {
 
   var images = document.querySelectorAll('.hero');
   var imagesLoaded = 0;
