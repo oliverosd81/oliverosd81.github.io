@@ -103,7 +103,7 @@ h4 {
     position: relative;
 }
 
-.newsletter form input:first-child {
+.newsletter form input {
     display: inline-block;
     width: 100%;
     padding: 14px 130px 14px 15px;
@@ -112,7 +112,7 @@ h4 {
     border-radius: 30px;
 }
 
-.newsletter form input:last-child {
+.newsletter form button {
     position: absolute;
     display: inline-block;
     outline: none;
