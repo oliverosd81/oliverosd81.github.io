@@ -127,6 +127,7 @@ h4 {
 }
 
 .g-recaptcha {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
