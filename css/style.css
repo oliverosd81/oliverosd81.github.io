@@ -126,6 +126,11 @@ h4 {
     right: 6px;
 }
 
+.newsletter form div {
+    justify-content: center;
+    align-items: center;
+}
+
 /* menu burguer */
 #menu-icon {
     font-size: 35px;
