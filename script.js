@@ -1,3 +1,4 @@
+// menu consts
 let menu = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.hero nav ul');
 
