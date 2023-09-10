@@ -24,13 +24,6 @@
 	display: block;
 }
 
-.aviso-cookies .galleta {
-	max-width: 100px;
-	position: absolute;
-	top: -50px;
-	left: calc(50% - 50px);
-}
-
 .aviso-cookies .titulo,
 .aviso-cookies .parrafo {
 	margin-bottom: 15px;
