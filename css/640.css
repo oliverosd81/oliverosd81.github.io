@@ -32,4 +32,19 @@
         font-size: 14px;
     }
 
+    .aviso-cookies {
+        max-width: 256px;
+     }
+
+    .aviso-cookies 
+    .titulo, 
+    .aviso-cookies 
+    .parrafo {
+        font-size: 18px;
+    }
+
+    .parrafo-cookie {
+        font-size: 13px;
+    }
+
 }
