@@ -1,247 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
+  <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPQPH47HFE"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-MPQPH47HFE"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'G-MPQPH47HFE');
+      gtag("config", "G-MPQPH47HFE");
     </script>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daniel Oliveros, Web Developer</title>
-    <meta name="description" 
-        content="Hi! My name is Daniel Eduardo Oliveros and this is My Portfolio Website, 
-            I'm a Web Developer, specialist in HTML5, CSS3, JavaScript and React.js">
-    <meta name="robots" content="index, follow">
-    <meta name="category" content="Portfolio, Web developer">
-    <meta name="Author" content="Daniel Eduardo Oliveros">
-    <meta name="keywords" content="web, developer, portfolio, design, daniel, eduardo, oliveros, html5, css3, javascript, react.js">
-    <meta name="locality" content="alcorcon, madrid, spain, europe">
+    <meta
+      name="description"
+      content="Hi! My name is Daniel Eduardo Oliveros and this is My Portfolio Website, 
+            I'm a Web Developer, specialist in HTML5, CSS3, JavaScript and React.js"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="category" content="Portfolio, Web developer" />
+    <meta name="Author" content="Daniel Eduardo Oliveros" />
+    <meta
+      name="keywords"
+      content="web, developer, portfolio, design, daniel, eduardo, oliveros, html5, css3, javascript, react.js"
+    />
+    <meta name="locality" content="alcorcon, madrid, spain, europe" />
     <meta name="msvalidate.01" content="9E16CE91F0370B2E98496DBB029B1A7F" />
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/1400.css">
-    <link rel="stylesheet" href="css/1280.css">
-    <link rel="stylesheet" href="css/1180.css">
-    <link rel="stylesheet" href="css/1000.css">
-    <link rel="stylesheet" href="css/855.css">
-    <link rel="stylesheet" href="css/740.css">
-    <link rel="stylesheet" href="css/640.css">
-    <link rel="stylesheet" href="css/cookies.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/1400.css" />
+    <link rel="stylesheet" href="css/1280.css" />
+    <link rel="stylesheet" href="css/1180.css" />
+    <link rel="stylesheet" href="css/1000.css" />
+    <link rel="stylesheet" href="css/855.css" />
+    <link rel="stylesheet" href="css/740.css" />
+    <link rel="stylesheet" href="css/640.css" />
+    <link rel="stylesheet" href="css/cookies.css" />
 
     <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
-    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- icons from boxicons.com -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
     <!-- or -->
-    <link rel="stylesheet"
-        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
 
-    <script src="https://kit.fontawesome.com/4da12da22d.js" crossorigin="anonymous"></script>
-
-</head>
-<body>
-
+    <script
+      src="https://kit.fontawesome.com/4da12da22d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <!-- Main Section -->
     <div class="hero" id="home">
-        <nav>
-            <h2 class="logo">Welcome to <span>My Portfolio</span></h2>
-            <ul class="menu-i">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#aboutme">About Me</a></li>
-                <li><a href="#webservices">Web Services</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contactme">Contact Me</a></li>
-            </ul>
-            <a href="#" class="btn">Subscribe</a>
-            <a href="#"><div class="bx bx-menu" id="menu-icon"></div></a>
-        </nav>
+      <nav>
+        <h2 class="logo">Welcome to <span>My Portfolio</span></h2>
+        <ul class="menu-i">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#aboutme">About Me</a></li>
+          <li><a href="#webservices">Web Services</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contactme">Contact Me</a></li>
+        </ul>
+        <a href="#" class="btn">Subscribe</a>
+        <a href="#"><div class="bx bx-menu" id="menu-icon"></div></a>
+      </nav>
 
-        <div class="hidden" id="content-id">
-            <h4>Hello World! My name is</h4>
-            <h1>Daniel <span>Oliveros</span></h1>
-            <h3>Web Developer based in Madrid, Spain</h3>
+      <div class="hidden" id="content-id">
+        <h4>Hello World! My name is</h4>
+        <h1>Daniel <span>Oliveros</span></h1>
+        <h3>Web Developer based in Madrid, Spain</h3>
 
-            <div class="newsletter">
-
-                <form name="contact" netlify>
-                    <input type="email" name="email" id="mail" placeholder="Enter Your Email" required/>
-                    <button type="submit">Let's Start</button>
-                    <br><br>
-                    <div data-netlify-recaptcha="true"></div>
-                </form>
-
-            </div>
+        <div class="newsletter">
+          <form name="contact" netlify>
+            <input
+              type="email"
+              name="email"
+              id="mail"
+              placeholder="Enter Your Email"
+              required
+            />
+            <button type="submit">Let's Start</button>
+            <br /><br />
+            <div data-netlify-recaptcha="true"></div>
+          </form>
         </div>
-
+      </div>
     </div>
 
     <!-- About Me Section -->
     <section class="about" id="aboutme">
-        <div class="main">
-            <img src="img/profile_pic_399.jpg" alt="Daniel Eduardo Oliveros, Web Developer" id="profile-pic">
-            <div class="about-text" id="main-about">
-                <h2>About Me</h2>
-                <h5>Developer <span>& Designer</span></h5>
-                <p>
-                    I have great skills coding with HTML5, CSS3 and JavaScript language,
-                    using libraries like React.js, TailwindCSS, Bootstrap and more. Mastering Web Design
-                    and Animation, Advanced user of Adobe Illustrator and Photoshop for design,
-                    digitalization and vectorization.
-                </p>
-                <a href="mailto:daniel@danidev.info"><button type="button">Let's talk</button></a>
-            </div>
+      <div class="main">
+        <img
+          src="img/profile_pic_399.jpg"
+          alt="Daniel Eduardo Oliveros, Web Developer"
+          id="profile-pic"
+        />
+        <div class="about-text" id="main-about">
+          <h2>About Me</h2>
+          <h5>Developer <span>& Designer</span></h5>
+          <p>
+            I have great skills coding with HTML5, CSS3 and JavaScript language,
+            using libraries like React.js, TailwindCSS, Bootstrap and more.
+            Mastering Web Design and Animation, Advanced user of Adobe
+            Illustrator and Photoshop for design, digitalization and
+            vectorization.
+          </p>
+          <a href="mailto:daniel@danidev.info"
+            ><button type="button">Let's talk</button></a
+          >
         </div>
+      </div>
     </section>
 
     <!-- My Services Section -->
     <div class="services" id="webservices">
-        <div class="tittle" id="tittle-id">
-            <h2>Web Services</h2>
+      <div class="tittle" id="tittle-id">
+        <h2>Web Services</h2>
+      </div>
+
+      <div class="box" id="box-id">
+        <div class="card">
+          <i class="fa-solid fa-code"></i>
+          <h5>Development</h5>
+          <div class="pra">
+            <p>
+              Every Website should be build with two primary goals: Firstly, it
+              needs to work across all devices. Secondly, it need to be fast as
+              possible.
+            </p>
+            <p style="text-align: center">
+              <!-- <a class="button" href="#">Read More</a> -->
+            </p>
+          </div>
         </div>
 
-        <div class="box" id="box-id">
-            <div class="card">
-                <i class="fa-solid fa-code"></i>
-                <h5>Development</h5>
-                <div class="pra">
-                    <p>
-                        Every Website should be build with two primary goals:
-                        Firstly, it needs to work across all devices. Secondly,
-                        it need to be fast as possible.
-                    </p>
-                    <p style="text-align: center;">
-                        <!-- <a class="button" href="#">Read More</a> -->
-                    </p>
-                </div>
-            </div>
-
-            <div class="card">
-                <i class="fa-solid fa-pen-ruler"></i>
-                <h5>Improvement</h5>
-                <div class="pra">
-                    <p>
-                        From web design, content creation, scripting language, 
-                        and SEO to web app maintenance, troubleshooting, and 
-                        security measures. All to make sure the web app or 
-                        another development project works exactly as it should.
-                    </p>
-                    <p style="text-align: center;">
-                        <!-- <a class="button" href="#">Read More</a> -->
-                    </p>
-                </div>
-            </div>
-
-            <div class="card">
-                <i class="fa-regular fa-bell"></i>
-                <h5>Plan, Design & Build</h5>
-                <div class="pra">
-                    <p>
-                        Not only good at creating web apps that last but also 
-                        know a lot about business strategy, usability, user 
-                        experience, responsive design, and design strategy.
-                    </p>
-                    <p style="text-align: center;">
-                        <!-- <a class="button" href="#">Read More</a> -->
-                    </p>
-                </div>
-            </div>
+        <div class="card">
+          <i class="fa-solid fa-pen-ruler"></i>
+          <h5>Improvement</h5>
+          <div class="pra">
+            <p>
+              From web design, content creation, scripting language, and SEO to
+              web app maintenance, troubleshooting, and security measures. All
+              to make sure the web app or another development project works
+              exactly as it should.
+            </p>
+            <p style="text-align: center">
+              <!-- <a class="button" href="#">Read More</a> -->
+            </p>
+          </div>
         </div>
+
+        <div class="card">
+          <i class="fa-regular fa-bell"></i>
+          <h5>Plan, Design & Build</h5>
+          <div class="pra">
+            <p>
+              Not only good at creating web apps that last but also know a lot
+              about business strategy, usability, user experience, responsive
+              design, and design strategy.
+            </p>
+            <p style="text-align: center">
+              <!-- <a class="button" href="#">Read More</a> -->
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- PORTFOLIO -->
+    <div class="portfolio"></div>
 
     <!-- Skills Section -->
     <div class="skills" id="skills">
-        <div class="tittle">
-            <h2>My Skills</h2>
-        </div>
+      <div class="tittle">
+        <h2>My Skills</h2>
+      </div>
 
-        <div class="box-skills" id="box-skills-1">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <p>
-                Frontend coding, focuses on the coding and creation of elements 
-                and features of websites that will then be seen by users around
-                the World Wide Web (...and the <span>Universe</span>)
-            </p>
-        </div>
-        <div class="box-skills" id="box-skills-2">
-            <p>
-                Improvement of your site to increase its visibility when people 
-                search for products or services related to your business in <span>Google, 
-                Bing, and other search engines.</span> The better visibility your pages 
-                have in search results, the more likely you are to garner attention 
-                and attract prospective and existing customers to your business
-            </p>
-            <i class="fa-brands fa-searchengin"></i>
-        </div>
-        <div class="box-skills" id="box-skills-3">
-            <i class="fa-solid fa-magnet"></i>
-            <p>
-                Simplicity, Usability and Visually Aesthetic. Creation of the best 
-                <span>User Experience</span> to engage customers in your business website
-                providing accessibility and ease to use
-            </p>
-        </div>
-        <div class="box-skills" id="box-skills-4">
-            <p>
-                Ensure the operation of your website in all browsers, both on desktop, 
-                mobile devices and tablets, through performance and visualization tests.
-                Always looking to improve the functionality of your Website
-            </p>
-            <i class="fa-brands fa-github"></i>
-        </div>
+      <div class="box-skills" id="box-skills-1">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <p>
+          Frontend coding, focuses on the coding and creation of elements and
+          features of websites that will then be seen by users around the World
+          Wide Web (...and the <span>Universe</span>)
+        </p>
+      </div>
+      <div class="box-skills" id="box-skills-2">
+        <p>
+          Improvement of your site to increase its visibility when people search
+          for products or services related to your business in
+          <span>Google, Bing, and other search engines.</span> The better
+          visibility your pages have in search results, the more likely you are
+          to garner attention and attract prospective and existing customers to
+          your business
+        </p>
+        <i class="fa-brands fa-searchengin"></i>
+      </div>
+      <div class="box-skills" id="box-skills-3">
+        <i class="fa-solid fa-magnet"></i>
+        <p>
+          Simplicity, Usability and Visually Aesthetic. Creation of the best
+          <span>User Experience</span> to engage customers in your business
+          website providing accessibility and ease to use
+        </p>
+      </div>
+      <div class="box-skills" id="box-skills-4">
+        <p>
+          Ensure the operation of your website in all browsers, both on desktop,
+          mobile devices and tablets, through performance and visualization
+          tests. Always looking to improve the functionality of your Website
+        </p>
+        <i class="fa-brands fa-github"></i>
+      </div>
     </div>
 
     <!-- Contact Section -->
     <div class="contact" id="contactme">
-        <p>Let Me Get You The Website You Dream</p>
-        <a href="mailto:daniel@danidev.info" class="button-two">Hire Me!</a>
+      <p>Let Me Get You The Website You Dream</p>
+      <a href="mailto:daniel@danidev.info" class="button-two">Hire Me!</a>
     </div>
 
     <!-- aviso de uso de cookies -->
     <div class="aviso-cookies" id="aviso-cookies">
-		<h3 class="titulo">Cookies</h3>
-		<p class="parrafo-cookie">
-            We use cookies to personalise content and ads, to provide social media features and to analyse our traffic.
-            We also share information about your use of our site with our analytics partners.
-        </p>
-		<button class="boton" id="btn-aceptar-cookies">I Agree</button>
-		<a class="enlace" href="aviso-cookies.html">Cookies Advice</a>
-	</div>
-	<div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
+      <h3 class="titulo">Cookies</h3>
+      <p class="parrafo-cookie">
+        We use cookies to personalise content and ads, to provide social media
+        features and to analyse our traffic. We also share information about
+        your use of our site with our analytics partners.
+      </p>
+      <button class="boton" id="btn-aceptar-cookies">I Agree</button>
+      <a class="enlace" href="aviso-cookies.html">Cookies Advice</a>
+    </div>
+    <div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
 
-	<script src="./aviso-cookies.js"></script>
+    <script src="./aviso-cookies.js"></script>
 
     <!-- Footer -->
     <footer>
-        <p>Daniel Eduardo Oliveros Fuenmayor</p>
-        <p>Follow me on:</p>
-        <div class="social">
-            <a rel="external" href="https://www.github.com/oliverosd81" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <!-- <a rel="external" href="https://www.linkedin.com/in/daniel-developer" target="_blank"><i class="fa-brands fa-linkedin"></i> -->
-            <!-- <a rel="external" href="https://www.facebook.com/profile.php?id=100076054938517" target="_blank"><i class="fa-brands fa-facebook"></i></a> -->
-            <a rel="external" href="https://www.instagram.com/oliverosd/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a rel="external" href="https://twitter.com/oliverosd" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-        </div>
-        <p class="end">Copyright by Daniel Oliveros &copy; 2023</p>
+      <p>Daniel Eduardo Oliveros Fuenmayor</p>
+      <p>Follow me on:</p>
+      <div class="social">
+        <a
+          rel="external"
+          href="https://www.github.com/oliverosd81"
+          target="_blank"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <!-- <a rel="external" href="https://www.linkedin.com/in/daniel-developer" target="_blank"><i class="fa-brands fa-linkedin"></i> -->
+        <!-- <a rel="external" href="https://www.facebook.com/profile.php?id=100076054938517" target="_blank"><i class="fa-brands fa-facebook"></i></a> -->
+        <a
+          rel="external"
+          href="https://www.instagram.com/oliverosd/"
+          target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a rel="external" href="https://twitter.com/oliverosd" target="_blank"
+          ><i class="fa-brands fa-twitter"></i
+        ></a>
+      </div>
+      <p class="end">Copyright by Daniel Oliveros &copy; 2023</p>
     </footer>
 
     <script src="script.js"></script>
-    
-</body>
+  </body>
 </html>
