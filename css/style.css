@@ -221,7 +221,7 @@ button:hover, .button-two:hover {
     box-sizing: border-box;
 }
 
-.tittle h2 {
+.services .title h2 {
     color: white;
     font-size: 75px;
     width: auto;
@@ -297,7 +297,7 @@ h5 {
     background-position: top;
 }
 
-.skills .tittle {
+.skills .title {
     display: flex;
     justify-content: center;
     align-items: center;
