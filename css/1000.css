@@ -59,4 +59,8 @@
         flex-direction: column;
         align-items: center;
     }
+
+    .tec-used {
+        bottom: 20px;
+    }
 }
