@@ -286,6 +286,24 @@ h5 {
     cursor: pointer;
 }
 
+/* PORTFOLIO SECTION */
+.portfolio {
+    width: 100%;
+    padding: 100px 0px;
+    background-color: #191919;
+    color: white;
+    box-sizing: border-box;
+}
+
+.portfolio-wrap {
+    width: 1130px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 /* Skills Section */
 .skills {
     width: 100%;
