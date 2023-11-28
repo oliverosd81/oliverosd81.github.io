@@ -24,8 +24,8 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding-top: 45px;
-  padding-left: 8%;
-  padding-right: 8%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .logo {
@@ -57,20 +57,17 @@ nav ul li a:hover {
   transition: 0.4s;
 }
 
-.btn {
-  background-color: cornflowerblue;
-  color: white;
-  text-decoration: none;
+.btn span {
   border: 2px solid transparent;
   font-weight: bold;
-  padding: 10px 25px;
+  padding: 10px 10px;
   border-radius: 30px;
   transition: transform 0.4s;
 }
 
-.btn:hover {
+/* .btn:hover {
   transform: scale(1.2);
-}
+} */
 
 .content {
   position: absolute;
@@ -363,6 +360,14 @@ h5 {
   justify-content: center;
   align-items: center;
   min-height: 128px;
+}
+
+.title h2 {
+  color: white;
+  font-size: 65px;
+  width: auto;
+  margin: 30px auto;
+  text-align: center;
 }
 
 .box-skills i {

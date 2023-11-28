@@ -8,6 +8,24 @@ menu.onclick = () => {
     navbar.classList.toggle('open');
 }
 
+// lógica para detectar cambios en el switch de idioma
+const checkbox = document.getElementById('checkboxInput');
+
+checkbox.addEventListener('change', () => {
+  if (checkbox.checked) {
+    // Cambia el texto al idioma español
+    window.location.href = 'index-es.html';
+  } else {
+    // Cambiar el texto al idioma inglés
+    window.location.href = 'index.html';
+  }
+});
+
+// Verificar el estado inicial basado en la URL actual
+if (window.location.href.includes('index-es.html')) {
+  checkbox.checked = true;
+}
+
 // check for background-image load
 window.onload = () => {
 
