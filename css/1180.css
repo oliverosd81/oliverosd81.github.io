@@ -12,4 +12,8 @@
         width: 164px;
     }
 
+    nav ul li {
+        font-size: 13px;
+    }
+
 }
