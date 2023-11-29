@@ -1,78 +1,47 @@
 // menu consts
-let menu = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.hero nav ul');
+let menu = document.querySelector("#menu-icon");
+let navbar = document.querySelector(".hero nav ul");
 
 // menu sandwich handler
 menu.onclick = () => {
-    menu.classList.toggle('bx-x');
-    navbar.classList.toggle('open');
-}
+  menu.classList.toggle("bx-x");
+  navbar.classList.toggle("open");
+};
 
 // lógica para detectar cambios en el switch de idioma
-const checkbox = document.getElementById('checkboxInput');
+const checkbox = document.getElementById("checkboxInput");
 
-checkbox.addEventListener('change', () => {
+checkbox.addEventListener("change", () => {
   if (checkbox.checked) {
     // Cambia el texto al idioma español
-    window.location.href = 'index-es.html';
+    window.location.href = "index-es.html";
   } else {
     // Cambiar el texto al idioma inglés
-    window.location.href = 'index.html';
+    window.location.href = "index.html";
   }
 });
 
 // Verificar el estado inicial basado en la URL actual
-if (window.location.href.includes('index-es.html')) {
+if (window.location.href.includes("index-es.html")) {
   checkbox.checked = true;
 }
 
-// check for background-image load
-window.onload = () => {
+window.addEventListener("scroll", reveal);
 
-  var images = document.querySelectorAll('.hero');
-  var imagesLoaded = 0;
+// To check the scroll position on page load
+reveal();
 
-  for (var i = 0; i < images.length; i++) {
-    var imageSrc = window.getComputedStyle(images[i], null).backgroundImage;
-    var image = new Image();
-    image.src = imageSrc.slice(4, -1).replace(/"/g, "");
-
-    image.onload = function() {
-      imagesLoaded++;
-      if (imagesLoaded === images.length) {
-        // All background-image were loaded correctly
-        // start home animation
-        document.getElementById("home").className = "hero slide-in-bck-center";
-        document.getElementById("content-id").className = "content text-focus-in";
-
-        // trigger the animations when the user scrolls down the page
-        window.onscroll = function() {
-          var scrollPos = window.pageYOffset;
-
-          if (scrollPos >= 0 && scrollPos < 230) {  // Main Section
-            document.getElementById("profile-pic").className = "hidden";
-            document.getElementById("main-about").className = "hidden";
-
-          } else if (scrollPos >= 230 && scrollPos < 460) {  // About Section
-            document.getElementById("profile-pic").className = "fade-in-left";
-            document.getElementById("main-about").className = "about-text fade-in-right";
-            document.getElementById("box-id").className = "hidden";
-
-          } else if (scrollPos >= 460 && scrollPos < 2100) {  // Web Services Section
-            document.getElementById("box-id").className = "box scale-in-center";
-            document.getElementById("box-skills-1").className = "hidden";
-            document.getElementById("box-skills-2").className = "hidden";
-            document.getElementById("box-skills-3").className = "hidden";
-            document.getElementById("box-skills-4").className = "hidden";
-
-          } else if (scrollPos >= 2100 && scrollPos < 2920) {  // Skills Section
-            document.getElementById("box-skills-1").className = "box-skills fade-in-bottom";
-            document.getElementById("box-skills-2").className = "box-skills fade-in-bottom";
-            document.getElementById("box-skills-3").className = "box-skills fade-in-bottom";
-            document.getElementById("box-skills-4").className = "box-skills fade-in-bottom";
-          }
-        };
-      };
+// Function to target elements to be animated
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    } else {
+      reveals[i].classList.remove("active");
     }
-  };
-};
+  }
+}
