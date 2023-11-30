@@ -17,6 +17,7 @@
         padding: 20px;
         border-radius: 4px;
         transition: all .55s ease;
+        z-index: 100001;
     }
 
     nav ul li a:hover {
@@ -45,6 +46,7 @@
     .open {
         position: absolute;
         top: 13%;
+        z-index: 100001;
     }
 
     .main {

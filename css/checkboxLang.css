@@ -5,7 +5,8 @@
 .switch-container {
 	display: inline-flex;
 	flex-wrap: nowrap;
-	align-items: baseline;
+	align-items: center;
+  z-index: 1;
 }
 
 .switch-container span {

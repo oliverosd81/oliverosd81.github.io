@@ -12,9 +12,8 @@
 
     .btn {
         position: absolute;
-        top: 10%;
+        top: 9%;
         right: 1%;
-        z-index: -999;
     }
 
     .box-skills i{
