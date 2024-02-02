@@ -1,16 +1,13 @@
 @media (max-width: 640px) {
 
-    .hero {
-        background-image: url("../img/background_img640_1.jpg");
-    }
-
-    .logo {
+     .logo {
         width: 180px;
     }
 
     .content {
-        top: 58%;
+        top: 63%;
         left: 5%;
+        right: 3%
     }
 
     .btn {
@@ -34,6 +31,21 @@
 
     footer p:nth-child(2){
         font-size: 14px;
+    }
+
+    .aviso-cookies {
+        max-width: 256px;
+     }
+
+    .aviso-cookies 
+    .titulo, 
+    .aviso-cookies 
+    .parrafo {
+        font-size: 18px;
+    }
+
+    .parrafo-cookie {
+        font-size: 13px;
     }
 
 }

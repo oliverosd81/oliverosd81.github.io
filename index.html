@@ -27,19 +27,20 @@
     <meta name="msvalidate.01" content="9E16CE91F0370B2E98496DBB029B1A7F" />
 
     <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="css/style_media1740.css"> -->
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/1400.css">
     <link rel="stylesheet" href="css/1280.css">
     <link rel="stylesheet" href="css/1180.css">
     <link rel="stylesheet" href="css/1000.css">
     <link rel="stylesheet" href="css/855.css">
-    <link rel="stylesheet" href="css/640.css">
     <link rel="stylesheet" href="css/740.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/640.css">
+    <link rel="stylesheet" href="css/cookies.css">
 
-    <link rel="preconnect" href="https://fonts.google.com/css2?family=Josefin+Sans:ital,wght@0,100;
-    0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
@@ -75,7 +76,7 @@
         <div class="hidden" id="content-id">
             <h4>Hello World! My name is</h4>
             <h1>Daniel <span>Oliveros</span></h1>
-            <h3>I'm a Web Developer based in Madrid, Spain</h3>
+            <h3>Web Developer based in Madrid, Spain</h3>
 
             <div class="newsletter">
 
@@ -100,11 +101,11 @@
                 <h5>Developer <span>& Designer</span></h5>
                 <p>
                     I have great skills coding with HTML5, CSS3 and JavaScript language,
-                    using libraries like Bootstrap and React.js and mastering Web Desing
-                    and Animation, Advanced user of Adobe Illustrator for design,
+                    using libraries like React.js, TailwindCSS, Bootstrap and more. Mastering Web Design
+                    and Animation, Advanced user of Adobe Illustrator and Photoshop for design,
                     digitalization and vectorization.
                 </p>
-                <a href="mailto:oliverosdf@gmail.com"><button type="button">Let's talk</button></a>
+                <a href="mailto:daniel@danidev.info"><button type="button">Let's talk</button></a>
             </div>
         </div>
     </section>
@@ -118,7 +119,7 @@
         <div class="box" id="box-id">
             <div class="card">
                 <i class="fa-solid fa-code"></i>
-                <h5>Developement</h5>
+                <h5>Development</h5>
                 <div class="pra">
                     <p>
                         Every Website should be build with two primary goals:
@@ -209,8 +210,22 @@
     <!-- Contact Section -->
     <div class="contact" id="contactme">
         <p>Let Me Get You The Website You Dream</p>
-        <a href="mailto:oliverosdf@gmail.com" class="button-two">Hire Me!</a>
+        <a href="mailto:daniel@danidev.info" class="button-two">Hire Me!</a>
     </div>
+
+    <!-- aviso de uso de cookies -->
+    <div class="aviso-cookies" id="aviso-cookies">
+		<h3 class="titulo">Cookies</h3>
+		<p class="parrafo-cookie">
+            We use cookies to personalise content and ads, to provide social media features and to analyse our traffic.
+            We also share information about your use of our site with our analytics partners.
+        </p>
+		<button class="boton" id="btn-aceptar-cookies">I Agree</button>
+		<a class="enlace" href="aviso-cookies.html">Cookies Advice</a>
+	</div>
+	<div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
+
+	<script src="./aviso-cookies.js"></script>
 
     <!-- Footer -->
     <footer>
