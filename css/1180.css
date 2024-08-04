@@ -1,9 +1,5 @@
 @media (max-width: 1180px) {
 
-    .hero {
-        background-image: url("../img/1180_v1.0.0.webp");
-    }
-
     .logo {
         color: white;
         font-size: 25px;

@@ -1,9 +1,4 @@
 @media (max-width: 740px) {
-
-    .hero {
-        background-image: url("../img/493_v1.0.0.webp");
-    }
-
     .content {
         top: 77%;
     }
