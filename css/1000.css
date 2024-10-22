@@ -60,6 +60,10 @@
         align-items: center;
     }
 
+    .portfolio-wrap-grid > div {
+        max-width: 100%;
+    }
+
     .tec-used {
         bottom: 20px;
     }

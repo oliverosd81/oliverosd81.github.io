@@ -308,17 +308,20 @@ h5 {
 }
 
 .portfolio-wrap-grid {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 5em;
   grid-template-areas: ". .";
   justify-content: space-around;
-  justify-items: center;
+  justify-items: center; */
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .portfolio-wrap-grid > div {
-  max-width: 90%;
+  max-width: 50%;
 }
 
 .portfolio-wrap-grid img {
