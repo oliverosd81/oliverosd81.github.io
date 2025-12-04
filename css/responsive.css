@@ -17,7 +17,7 @@
     }
 
     nav ul li {
-        padding: 10px 22px;
+        padding: 10px;
     }
 
     nav ul li a {
@@ -42,7 +42,7 @@
     nav ul li {
         list-style-type: none;
         display: inline-block;
-        padding: 8px 18px;
+        padding: 8px;
     }
 
     nav ul li a {
@@ -90,7 +90,7 @@
     }
 
     nav ul li {
-        padding: 8px 15px;
+        padding: 6px;
     }
 
     nav ul li a {
@@ -123,7 +123,7 @@
     nav ul li {
         list-style-type: none;
         display: inline-block;
-        padding: 8px 12px;
+        /* padding: 8px; */
     }
 
     nav ul li a {
