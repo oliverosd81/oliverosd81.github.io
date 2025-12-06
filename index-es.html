@@ -34,12 +34,12 @@
   <link rel="stylesheet" href="css/modern-glass.css" />
   <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/cookies.css" />
+  <link rel="stylesheet" href="css/portfolio-buttons.css" />
 
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
 
   <!-- icons from boxicons.com -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
@@ -116,14 +116,14 @@
         <h2>Sobre mí</h2>
         <h5>Desarrollador <span>y Diseñador</span></h5>
         <p>
-          Desarrollo experiencias front-end modernas y de alto rendimiento utilizando HTML5, CSS3 y JavaScript, 
-          respaldadas por frameworks y herramientas como React, Vite, TailwindCSS y Bootstrap. Mi flujo de 
+          Desarrollo experiencias front-end modernas y de alto rendimiento utilizando HTML5, CSS3 y JavaScript,
+          respaldadas por frameworks y herramientas como React, Vite, TailwindCSS y Bootstrap. Mi flujo de
           trabajo se centra en arquitecturas modulares, sistemas de diseño responsivo y componentes escalables.
           <br><br>
-          Combino precisión técnica con una visión creativa. Diseño interfaces con jerarquía clara, movimiento 
+          Combino precisión técnica con una visión creativa. Diseño interfaces con jerarquía clara, movimiento
           intencional y micro-interacciones fluidas que aportan usabilidad y personalidad.
           <br><br>
-          Como usuario avanzado de Adobe Illustrator y Photoshop, creo y optimizo recursos digitales, gráficos 
+          Como usuario avanzado de Adobe Illustrator y Photoshop, creo y optimizo recursos digitales, gráficos
           vectoriales y composiciones visuales que se integran de forma coherente en el proceso de desarrollo.
         </p>
         <a href="mailto:daniel@danidev.eu"><button type="button">Hablemos</button></a>
@@ -194,10 +194,21 @@
       </div>
 
       <div class="portfolio-wrap-grid">
-        <div>
-          <a href="https://medicionesjm.netlify.app/" target="_blank">
+        <div class="portfolio-item" data-website="https://medicionesjm.netlify.app/"
+          data-github="https://github.com/oliverosd81/mediciones-jm">
+          <a href="https://medicionesjm.netlify.app/" target="_blank" class="portfolio-link">
             <img src="./img/459shots_so.webp" alt="medicionesJM.com by Jose Mulero" loading="lazy" />
           </a>
+          <div class="portfolio-overlay">
+            <a href="https://medicionesjm.netlify.app/" class="portfolio-overlay-btn" target="_blank">
+              <i class="fa-solid fa-globe"></i>
+              <span>Ir a la Web</span>
+            </a>
+            <a href="https://github.com/oliverosd81/mediciones-jm" class="portfolio-overlay-btn" target="_blank">
+              <i class="fa-brands fa-github"></i>
+              <span>Ver Repositorio</span>
+            </a>
+          </div>
           <div class="tec-used">
             <span>react.js</span>
             <span>vite.js</span>
@@ -205,10 +216,21 @@
           </div>
         </div>
 
-        <div>
-          <a href="https://amanoryd.es" target="_blank">
+        <div class="portfolio-item" data-website="https://amanoryd.es"
+          data-github="https://github.com/oliverosd81/amano-ryd">
+          <a href="https://amanoryd.es" target="_blank" class="portfolio-link">
             <img src="./img/174shots_so.webp" alt="Amano, reformas y decoración" loading="lazy" />
           </a>
+          <div class="portfolio-overlay">
+            <a href="https://amanoryd.es" class="portfolio-overlay-btn" target="_blank">
+              <i class="fa-solid fa-globe"></i>
+              <span>Ir a la Web</span>
+            </a>
+            <a href="https://github.com/oliverosd81/amano-ryd" class="portfolio-overlay-btn" target="_blank">
+              <i class="fa-brands fa-github"></i>
+              <span>Ver Repositorio</span>
+            </a>
+          </div>
           <div class="tec-used">
             <span>react.js</span>
             <span>vite.js</span>
@@ -216,10 +238,21 @@
           </div>
         </div>
 
-        <div>
-          <a href="https://monglamour.netlify.app/" target="_blank">
+        <div class="portfolio-item" data-website="https://monglamour.netlify.app/"
+          data-github="https://github.com/oliverosd81/monglamour">
+          <a href="https://monglamour.netlify.app/" target="_blank" class="portfolio-link">
             <img src="./img/279shots_so.webp" alt="Monglamour - Beaty Hair Artist" loading="lazy" />
           </a>
+          <div class="portfolio-overlay">
+            <a href="https://monglamour.netlify.app/" class="portfolio-overlay-btn" target="_blank">
+              <i class="fa-solid fa-globe"></i>
+              <span>Ir a la Web</span>
+            </a>
+            <a href="https://github.com/oliverosd81/monglamour" class="portfolio-overlay-btn" target="_blank">
+              <i class="fa-brands fa-github"></i>
+              <span>Ver Repositorio</span>
+            </a>
+          </div>
           <div class="tec-used">
             <span>html</span>
             <span>css3</span>
@@ -295,6 +328,9 @@
   <div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
 
   <script src="./aviso-cookies.js" defer></script>
+
+  <!-- Portfolio Backdrop -->
+  <div class="portfolio-backdrop" id="portfolio-backdrop"></div>
 
   <!-- Footer -->
   <footer>
