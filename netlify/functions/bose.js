@@ -19,7 +19,6 @@ exports.handler = async (event) => {
         'Content-Type': 'application/json'
     };
 
-    // Handle CORS preflight
     if (event.httpMethod === 'OPTIONS') {
         return { statusCode: 200, headers, body: '' };
     }
@@ -34,7 +33,6 @@ exports.handler = async (event) => {
         };
     }
 
-    const path = event.path.replace('/.netlify/functions/bose', '');
     const action = event.queryStringParameters?.action;
 
     try {

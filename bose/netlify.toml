@@ -9,3 +9,13 @@
   from = "/bose"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/bose/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/bose/callback"
+  to = "/callback.html"
+  status = 200
