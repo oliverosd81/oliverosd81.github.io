@@ -2,7 +2,7 @@ const https = require('https');
 
 const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-const SPOTIFY_REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI || 'https://danidev.eu/bose/callback';
+const SPOTIFY_REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI || 'https://danidev.eu/bose/';
 
 function httpsRequest(options, postData = null) {
     return new Promise((resolve, reject) => {
