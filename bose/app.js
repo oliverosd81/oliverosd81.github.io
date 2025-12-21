@@ -1,6 +1,7 @@
 // APIs
 const BOSE_API = '/.netlify/functions/bose';
 const SPOTIFY_API = '/.netlify/functions/spotify';
+const QUEUE_API = '/.netlify/functions/queue';
 
 // State
 let isPlaying = false;
@@ -11,7 +12,7 @@ let spotifyRefreshToken = localStorage.getItem('spotify_refresh_token');
 let tokenExpiry = localStorage.getItem('spotify_token_expiry');
 let currentUser = null;
 let searchTimeout;
-let queueData = JSON.parse(localStorage.getItem('queue_data') || '[]');
+let queueEntriesCache = [];
 
 // Elements
 const albumArt = document.getElementById('albumArt');
@@ -273,7 +274,57 @@ async function showSpotifyInterface() {
         }
     }
 
+    // Load queue entries from database
+    await loadQueueEntries();
     loadQueue();
+}
+
+// ===== DATABASE FUNCTIONS =====
+async function loadQueueEntries() {
+    try {
+        const response = await fetch(`${QUEUE_API}?action=get-recent`);
+        const data = await response.json();
+        queueEntriesCache = data || [];
+    } catch (error) {
+        console.error('Error loading queue entries:', error);
+        queueEntriesCache = [];
+    }
+}
+
+async function saveQueueEntry(trackUri, trackName, trackArtist, trackImage, addedBy) {
+    try {
+        const response = await fetch(`${QUEUE_API}?action=add`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                trackUri,
+                trackName,
+                trackArtist,
+                trackImage,
+                addedBy
+            })
+        });
+        const data = await response.json();
+        
+        if (data.success) {
+            // Update local cache
+            queueEntriesCache.push({
+                track_uri: trackUri,
+                added_by: addedBy,
+                added_at: new Date().toISOString()
+            });
+        }
+        
+        return data.success;
+    } catch (error) {
+        console.error('Error saving queue entry:', error);
+        return false;
+    }
+}
+
+function findAddedBy(uri) {
+    const entry = queueEntriesCache.find(e => e.track_uri === uri);
+    return entry?.added_by || null;
 }
 
 // ===== SEARCH =====
@@ -340,6 +391,7 @@ async function addToQueue(uri, name, artist, image, btn) {
     }
 
     try {
+        // Add to Spotify queue
         const response = await fetch(`${SPOTIFY_API}?action=queue&uri=${encodeURIComponent(uri)}`, {
             headers: { 'Authorization': `Bearer ${spotifyToken}` }
         });
@@ -349,17 +401,9 @@ async function addToQueue(uri, name, artist, image, btn) {
             btn.classList.add('added');
             btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
             
-            // Add to local queue data with user info
-            const queueItem = {
-                uri,
-                name,
-                artist,
-                image,
-                addedBy: currentUser?.display_name || 'Anónimo',
-                addedAt: Date.now()
-            };
-            queueData.push(queueItem);
-            localStorage.setItem('queue_data', JSON.stringify(queueData));
+            // Save to database
+            const addedBy = currentUser?.display_name || 'Anónimo';
+            await saveQueueEntry(uri, name, artist, image, addedBy);
             
             showToast(`"${name}" añadido`);
             loadQueue();
@@ -432,21 +476,8 @@ async function loadQueue() {
     }
 }
 
-function findAddedBy(uri) {
-    const item = queueData.find(q => q.uri === uri);
-    return item?.addedBy || null;
-}
-
-// Clean old queue data (older than 24h)
-function cleanOldQueueData() {
-    const oneDayAgo = Date.now() - (24 * 60 * 60 * 1000);
-    queueData = queueData.filter(item => item.addedAt > oneDayAgo);
-    localStorage.setItem('queue_data', JSON.stringify(queueData));
-}
-
 // ===== INITIALIZE =====
 async function init() {
-    cleanOldQueueData();
     await updateNowPlaying();
     setInterval(updateNowPlaying, 5000);
 
@@ -458,9 +489,12 @@ async function init() {
         await showSpotifyInterface();
     }
 
-    // Refresh queue every 10 seconds
-    setInterval(() => {
-        if (spotifyToken) loadQueue();
+    // Refresh queue and entries every 10 seconds
+    setInterval(async () => {
+        if (spotifyToken) {
+            await loadQueueEntries();
+            loadQueue();
+        }
     }, 10000);
 }
 
