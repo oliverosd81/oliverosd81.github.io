@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bose SoundTouch</title>
+    <title>Danidev.eu - Bose SoundTouch</title>
     <style>
         * {
             margin: 0;
@@ -26,64 +26,33 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-primary);
+            background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
             color: var(--text-primary);
             min-height: 100vh;
-            background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            justify-content: center;
             padding: 20px;
-            gap: 10px;
-            position: sticky;
-            top: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(20px);
-            z-index: 100;
         }
 
-        .tab-btn {
-            background: var(--bg-tertiary);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 20px;
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn.active {
-            background: var(--text-primary);
-            color: var(--bg-primary);
-        }
-
-        .tab-btn:hover:not(.active) {
-            background: var(--bg-elevated);
-        }
-
-        /* Tab Content */
-        .tab-content {
-            display: none;
-            padding: 20px;
-            max-width: 500px;
+        .app-container {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
 
-        .tab-content.active {
-            display: block;
+        @media (max-width: 900px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* Player Tab */
-        .player-container {
+        /* Left Column - Player */
+        .player-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
+            padding: 20px;
         }
 
         .album-art {
@@ -116,8 +85,8 @@
         }
 
         .speaker-icon {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             fill: var(--text-secondary);
             z-index: 1;
         }
@@ -156,9 +125,9 @@
         }
 
         .track-source {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-secondary);
-            margin-top: 8px;
+            margin-top: 6px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -167,7 +136,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 40px;
+            gap: 35px;
         }
 
         .control-btn {
@@ -200,16 +169,16 @@
         }
 
         .play-pause-btn {
-            width: 70px;
-            height: 70px;
+            width: 65px;
+            height: 65px;
             background: var(--text-primary);
             border-radius: 50%;
         }
 
         .play-pause-btn svg {
             fill: var(--bg-primary);
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
         }
 
         .play-pause-btn:hover {
@@ -218,6 +187,7 @@
 
         .volume-container {
             width: 100%;
+            max-width: 300px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -258,9 +228,9 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 20px;
+            padding: 10px 18px;
             background: var(--glass);
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid var(--glass-border);
         }
 
@@ -295,16 +265,15 @@
         .power-btn {
             background: var(--bg-tertiary);
             border: none;
-            padding: 12px 24px;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 18px;
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.2s ease;
-            margin-top: 10px;
         }
 
         .power-btn:hover {
@@ -313,82 +282,85 @@
         }
 
         .power-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             fill: currentColor;
         }
 
-        /* Search Tab */
-        .search-container {
+        /* Right Column - Search & Queue */
+        .sidebar-section {
             display: flex;
             flex-direction: column;
             gap: 20px;
+            max-height: calc(100vh - 40px);
         }
 
+        /* Spotify Login */
         .spotify-login {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-            padding: 40px 20px;
+            gap: 16px;
+            padding: 30px 20px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
             text-align: center;
         }
 
         .spotify-logo {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             fill: var(--spotify-green);
         }
 
-        .spotify-login h2 {
-            font-size: 24px;
+        .spotify-login h3 {
+            font-size: 18px;
             font-weight: 600;
         }
 
         .spotify-login p {
             color: var(--text-secondary);
-            font-size: 14px;
-            max-width: 300px;
+            font-size: 13px;
         }
 
         .spotify-btn {
             background: var(--spotify-green);
             border: none;
-            padding: 14px 32px;
-            border-radius: 30px;
+            padding: 12px 28px;
+            border-radius: 25px;
             color: white;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .spotify-btn:hover {
             transform: scale(1.05);
-            opacity: 0.9;
         }
 
         .spotify-btn svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             fill: white;
         }
 
+        /* Search Box */
         .search-box {
             position: relative;
         }
 
         .search-input {
             width: 100%;
-            padding: 16px 20px 16px 50px;
+            padding: 14px 18px 14px 46px;
             background: var(--bg-tertiary);
             border: none;
             border-radius: 12px;
             color: var(--text-primary);
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
             transition: background 0.2s ease;
         }
@@ -403,29 +375,44 @@
 
         .search-icon {
             position: absolute;
-            left: 18px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: var(--text-secondary);
         }
 
+        /* Search Results */
         .search-results {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            max-height: 60vh;
+            gap: 6px;
+            max-height: 200px;
             overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .search-results::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .search-results::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .search-results::-webkit-scrollbar-thumb {
+            background: var(--bg-elevated);
+            border-radius: 2px;
         }
 
         .track-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px;
+            gap: 10px;
+            padding: 10px;
             background: var(--bg-secondary);
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             transition: background 0.2s ease;
         }
@@ -435,8 +422,8 @@
         }
 
         .track-item img {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border-radius: 6px;
             object-fit: cover;
         }
@@ -447,7 +434,7 @@
         }
 
         .track-item-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
             white-space: nowrap;
             overflow: hidden;
@@ -455,7 +442,7 @@
         }
 
         .track-item-artist {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
             white-space: nowrap;
             overflow: hidden;
@@ -465,8 +452,8 @@
         .add-queue-btn {
             background: var(--spotify-green);
             border: none;
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -481,8 +468,8 @@
         }
 
         .add-queue-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: white;
         }
 
@@ -490,47 +477,77 @@
             background: var(--text-secondary);
         }
 
-        /* Queue Tab */
-        .queue-container {
+        /* Queue Section */
+        .queue-section {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 300px;
         }
 
         .queue-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .queue-header h2 {
-            font-size: 20px;
+        .queue-header h3 {
+            font-size: 16px;
             font-weight: 600;
         }
 
+        .queue-count {
+            font-size: 12px;
+            color: var(--text-secondary);
+            background: var(--bg-tertiary);
+            padding: 4px 10px;
+            border-radius: 10px;
+        }
+
         .queue-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
+        .queue-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .queue-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .queue-list::-webkit-scrollbar-thumb {
+            background: var(--bg-elevated);
+            border-radius: 2px;
+        }
+
         .queue-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: var(--bg-secondary);
-            border-radius: 12px;
+            gap: 10px;
+            padding: 10px;
+            background: var(--bg-tertiary);
+            border-radius: 10px;
         }
 
         .queue-item.now-playing {
-            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            background: linear-gradient(135deg, rgba(250, 45, 72, 0.2) 0%, var(--bg-tertiary) 100%);
             border: 1px solid var(--accent);
         }
 
         .queue-item img {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border-radius: 6px;
             object-fit: cover;
         }
@@ -541,7 +558,7 @@
         }
 
         .queue-item-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
             white-space: nowrap;
             overflow: hidden;
@@ -549,32 +566,92 @@
         }
 
         .queue-item-artist {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        .now-playing-badge {
+        .queue-item-added-by {
             font-size: 11px;
+            color: var(--spotify-green);
+            margin-top: 2px;
+        }
+
+        .now-playing-badge {
+            font-size: 10px;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .empty-queue {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 30px;
             text-align: center;
-            padding: 40px 20px;
             color: var(--text-secondary);
         }
 
         .empty-queue svg {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             fill: var(--text-secondary);
-            margin-bottom: 16px;
-            opacity: 0.5;
+            margin-bottom: 12px;
+            opacity: 0.4;
+        }
+
+        .empty-queue p {
+            font-size: 14px;
+        }
+
+        /* User Info Bar */
+        .user-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 12px;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .logout-btn:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
         }
 
         /* Toast */
@@ -600,38 +677,30 @@
         }
 
         /* Responsive */
-        @media (max-width: 440px) {
+        @media (max-width: 900px) {
+            .player-section {
+                padding: 10px;
+            }
+
             .album-art {
-                width: 240px;
-                height: 240px;
+                width: 220px;
+                height: 220px;
             }
 
             .track-title {
                 font-size: 20px;
             }
 
-            .controls {
-                gap: 30px;
-            }
-
-            .play-pause-btn {
-                width: 60px;
-                height: 60px;
+            .sidebar-section {
+                max-height: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Tabs -->
-    <div class="tabs">
-        <button class="tab-btn active" data-tab="player">Reproductor</button>
-        <button class="tab-btn" data-tab="search">Buscar</button>
-        <button class="tab-btn" data-tab="queue">Cola</button>
-    </div>
-
-    <!-- Player Tab -->
-    <div class="tab-content active" id="player-tab">
-        <div class="player-container">
+    <div class="app-container">
+        <!-- Left Column - Player -->
+        <div class="player-section">
             <div class="album-art" id="albumArt">
                 <svg class="speaker-icon" viewBox="0 0 24 24">
                     <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6zm-2 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
@@ -687,18 +756,16 @@
                 Apagar
             </button>
         </div>
-    </div>
 
-    <!-- Search Tab -->
-    <div class="tab-content" id="search-tab">
-        <div class="search-container">
+        <!-- Right Column - Search & Queue -->
+        <div class="sidebar-section">
             <!-- Spotify Login -->
             <div class="spotify-login" id="spotifyLogin">
                 <svg class="spotify-logo" viewBox="0 0 24 24">
                     <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
                 </svg>
-                <h2>Conectar Spotify</h2>
-                <p>Inicia sesión con Spotify para buscar canciones y añadirlas a la cola</p>
+                <h3>Conectar Spotify</h3>
+                <p>Busca canciones y añádelas a la cola</p>
                 <button class="spotify-btn" id="spotifyLoginBtn">
                     <svg viewBox="0 0 24 24">
                         <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
@@ -707,31 +774,42 @@
                 </button>
             </div>
 
-            <!-- Search Interface -->
-            <div id="searchInterface" style="display: none;">
+            <!-- Search & Queue (shown after login) -->
+            <div id="spotifyInterface" style="display: none;">
+                <!-- User Bar -->
+                <div class="user-bar">
+                    <div class="user-info">
+                        <img class="user-avatar" id="userAvatar" src="" alt="">
+                        <span class="user-name" id="userName">Usuario</span>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">Cerrar sesión</button>
+                </div>
+
+                <!-- Search -->
                 <div class="search-box">
                     <svg class="search-icon" viewBox="0 0 24 24">
                         <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
                     </svg>
                     <input type="text" class="search-input" id="searchInput" placeholder="Buscar canciones o artistas...">
                 </div>
-                <div class="search-results" id="searchResults"></div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Queue Tab -->
-    <div class="tab-content" id="queue-tab">
-        <div class="queue-container">
-            <div class="queue-header">
-                <h2>Cola de reproducción</h2>
-            </div>
-            <div class="queue-list" id="queueList">
-                <div class="empty-queue" id="emptyQueue">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-                    </svg>
-                    <p>La cola está vacía</p>
+                <!-- Search Results -->
+                <div class="search-results" id="searchResults"></div>
+
+                <!-- Queue -->
+                <div class="queue-section">
+                    <div class="queue-header">
+                        <h3>Cola de reproducción</h3>
+                        <span class="queue-count" id="queueCount">0 canciones</span>
+                    </div>
+                    <div class="queue-list" id="queueList">
+                        <div class="empty-queue" id="emptyQueue">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                            </svg>
+                            <p>La cola está vacía<br><small>Busca canciones para añadir</small></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -752,7 +830,9 @@
         let spotifyToken = localStorage.getItem('spotify_token');
         let spotifyRefreshToken = localStorage.getItem('spotify_refresh_token');
         let tokenExpiry = localStorage.getItem('spotify_token_expiry');
+        let currentUser = null;
         let searchTimeout;
+        let queueData = JSON.parse(localStorage.getItem('queue_data') || '[]');
 
         // Elements
         const albumArt = document.getElementById('albumArt');
@@ -772,25 +852,15 @@
         const toast = document.getElementById('toast');
         const spotifyLogin = document.getElementById('spotifyLogin');
         const spotifyLoginBtn = document.getElementById('spotifyLoginBtn');
-        const searchInterface = document.getElementById('searchInterface');
+        const spotifyInterface = document.getElementById('spotifyInterface');
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
         const queueList = document.getElementById('queueList');
+        const queueCount = document.getElementById('queueCount');
         const emptyQueue = document.getElementById('emptyQueue');
-
-        // Tabs
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById(`${btn.dataset.tab}-tab`).classList.add('active');
-                
-                if (btn.dataset.tab === 'queue' && spotifyToken) {
-                    loadQueue();
-                }
-            });
-        });
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        const logoutBtn = document.getElementById('logoutBtn');
 
         // Bose Controls
         async function sendBoseCommand(command) {
@@ -948,10 +1018,34 @@
             }
         }
 
+        async function getSpotifyUser() {
+            try {
+                const response = await fetch(`${SPOTIFY_API}?action=me`, {
+                    headers: { 'Authorization': `Bearer ${spotifyToken}` }
+                });
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                return null;
+            }
+        }
+
         spotifyLoginBtn.addEventListener('click', async () => {
             const response = await fetch(`${SPOTIFY_API}?action=auth-url`);
             const data = await response.json();
             window.location.href = data.url;
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('spotify_token');
+            localStorage.removeItem('spotify_refresh_token');
+            localStorage.removeItem('spotify_token_expiry');
+            spotifyToken = null;
+            spotifyRefreshToken = null;
+            currentUser = null;
+            spotifyLogin.style.display = 'flex';
+            spotifyInterface.style.display = 'none';
+            showToast('Sesión cerrada');
         });
 
         async function handleSpotifyCallback() {
@@ -970,15 +1064,32 @@
                     localStorage.setItem('spotify_token_expiry', Date.now() + (data.expires_in * 1000));
                     
                     window.history.replaceState({}, document.title, window.location.pathname);
-                    showSpotifyInterface();
+                    await showSpotifyInterface();
                     showToast('Conectado a Spotify');
                 }
             }
         }
 
-        function showSpotifyInterface() {
+        async function showSpotifyInterface() {
             spotifyLogin.style.display = 'none';
-            searchInterface.style.display = 'block';
+            spotifyInterface.style.display = 'flex';
+            spotifyInterface.style.flexDirection = 'column';
+            spotifyInterface.style.gap = '16px';
+            spotifyInterface.style.flex = '1';
+
+            // Get user info
+            currentUser = await getSpotifyUser();
+            if (currentUser) {
+                userName.textContent = currentUser.display_name || 'Usuario';
+                if (currentUser.images?.[0]?.url) {
+                    userAvatar.src = currentUser.images[0].url;
+                    userAvatar.style.display = 'block';
+                } else {
+                    userAvatar.style.display = 'none';
+                }
+            }
+
+            loadQueue();
         }
 
         // Search
@@ -998,7 +1109,7 @@
             if (!await checkSpotifyToken()) {
                 showToast('Sesión expirada');
                 spotifyLogin.style.display = 'flex';
-                searchInterface.style.display = 'none';
+                spotifyInterface.style.display = 'none';
                 return;
             }
 
@@ -1017,21 +1128,27 @@
         }
 
         function renderSearchResults(tracks) {
-            searchResults.innerHTML = tracks.map(track => `
+            searchResults.innerHTML = tracks.slice(0, 8).map(track => `
                 <div class="track-item" data-uri="${track.uri}">
                     <img src="${track.album.images[2]?.url || track.album.images[0]?.url}" alt="">
                     <div class="track-item-info">
-                        <div class="track-item-title">${track.name}</div>
-                        <div class="track-item-artist">${track.artists.map(a => a.name).join(', ')}</div>
+                        <div class="track-item-title">${escapeHtml(track.name)}</div>
+                        <div class="track-item-artist">${escapeHtml(track.artists.map(a => a.name).join(', '))}</div>
                     </div>
-                    <button class="add-queue-btn" onclick="addToQueue('${track.uri}', this)">
+                    <button class="add-queue-btn" onclick="addToQueue('${track.uri}', '${escapeHtml(track.name)}', '${escapeHtml(track.artists[0].name)}', '${track.album.images[2]?.url || track.album.images[0]?.url}', this)">
                         <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                     </button>
                 </div>
             `).join('');
         }
 
-        async function addToQueue(uri, btn) {
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, (m) => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[m]));
+        }
+
+        async function addToQueue(uri, name, artist, image, btn) {
             if (!await checkSpotifyToken()) {
                 showToast('Sesión expirada');
                 return;
@@ -1046,7 +1163,21 @@
                 if (data.success) {
                     btn.classList.add('added');
                     btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
-                    showToast('Añadido a la cola');
+                    
+                    // Add to local queue data with user info
+                    const queueItem = {
+                        uri,
+                        name,
+                        artist,
+                        image,
+                        addedBy: currentUser?.display_name || 'Anónimo',
+                        addedAt: Date.now()
+                    };
+                    queueData.push(queueItem);
+                    localStorage.setItem('queue_data', JSON.stringify(queueData));
+                    
+                    showToast(`"${name}" añadido por ${queueItem.addedBy}`);
+                    loadQueue();
                 } else {
                     showToast('Error: ¿Está Spotify activo?');
                 }
@@ -1064,57 +1195,88 @@
                 });
                 const data = await response.json();
 
-                if (data.currently_playing || data.queue?.length) {
-                    emptyQueue.style.display = 'none';
-                    let html = '';
+                let totalTracks = 0;
+                let html = '';
 
-                    if (data.currently_playing) {
-                        const track = data.currently_playing;
-                        html += `
-                            <div class="queue-item now-playing">
-                                <img src="${track.album?.images[2]?.url || track.album?.images[0]?.url || ''}" alt="">
-                                <div class="queue-item-info">
-                                    <div class="now-playing-badge">Reproduciendo</div>
-                                    <div class="queue-item-title">${track.name}</div>
-                                    <div class="queue-item-artist">${track.artists?.map(a => a.name).join(', ')}</div>
-                                </div>
+                if (data.currently_playing) {
+                    const track = data.currently_playing;
+                    const addedByInfo = findAddedBy(track.uri);
+                    html += `
+                        <div class="queue-item now-playing">
+                            <img src="${track.album?.images[2]?.url || track.album?.images[0]?.url || ''}" alt="">
+                            <div class="queue-item-info">
+                                <div class="now-playing-badge">▶ Reproduciendo</div>
+                                <div class="queue-item-title">${escapeHtml(track.name)}</div>
+                                <div class="queue-item-artist">${escapeHtml(track.artists?.map(a => a.name).join(', '))}</div>
+                                ${addedByInfo ? `<div class="queue-item-added-by">Añadido por ${escapeHtml(addedByInfo)}</div>` : ''}
                             </div>
-                        `;
-                    }
+                        </div>
+                    `;
+                    totalTracks++;
+                }
 
-                    if (data.queue) {
-                        html += data.queue.map(track => `
+                if (data.queue?.length) {
+                    data.queue.forEach(track => {
+                        const addedByInfo = findAddedBy(track.uri);
+                        html += `
                             <div class="queue-item">
                                 <img src="${track.album?.images[2]?.url || track.album?.images[0]?.url || ''}" alt="">
                                 <div class="queue-item-info">
-                                    <div class="queue-item-title">${track.name}</div>
-                                    <div class="queue-item-artist">${track.artists?.map(a => a.name).join(', ')}</div>
+                                    <div class="queue-item-title">${escapeHtml(track.name)}</div>
+                                    <div class="queue-item-artist">${escapeHtml(track.artists?.map(a => a.name).join(', '))}</div>
+                                    ${addedByInfo ? `<div class="queue-item-added-by">Añadido por ${escapeHtml(addedByInfo)}</div>` : ''}
                                 </div>
                             </div>
-                        `).join('');
-                    }
+                        `;
+                        totalTracks++;
+                    });
+                }
 
+                if (totalTracks > 0) {
+                    emptyQueue.style.display = 'none';
                     queueList.innerHTML = html;
+                    queueCount.textContent = `${totalTracks} ${totalTracks === 1 ? 'canción' : 'canciones'}`;
                 } else {
-                    emptyQueue.style.display = 'block';
+                    emptyQueue.style.display = 'flex';
+                    queueList.innerHTML = '';
+                    queueList.appendChild(emptyQueue);
+                    queueCount.textContent = '0 canciones';
                 }
             } catch (error) {
                 console.error('Error loading queue:', error);
             }
         }
 
+        function findAddedBy(uri) {
+            const item = queueData.find(q => q.uri === uri);
+            return item?.addedBy || null;
+        }
+
+        // Clean old queue data (older than 24h)
+        function cleanOldQueueData() {
+            const oneDayAgo = Date.now() - (24 * 60 * 60 * 1000);
+            queueData = queueData.filter(item => item.addedAt > oneDayAgo);
+            localStorage.setItem('queue_data', JSON.stringify(queueData));
+        }
+
         // Initialize
         async function init() {
+            cleanOldQueueData();
             await updateNowPlaying();
             setInterval(updateNowPlaying, 5000);
 
             // Check for Spotify callback
-            handleSpotifyCallback();
+            await handleSpotifyCallback();
 
             // Check if already logged in
             if (await checkSpotifyToken()) {
-                showSpotifyInterface();
+                await showSpotifyInterface();
             }
+
+            // Refresh queue every 10 seconds
+            setInterval(() => {
+                if (spotifyToken) loadQueue();
+            }, 10000);
         }
 
         init();

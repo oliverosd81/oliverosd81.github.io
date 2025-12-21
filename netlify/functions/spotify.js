@@ -34,7 +34,7 @@ exports.handler = async (event) => {
     try {
         // Get authorization URL
         if (action === 'auth-url') {
-            const scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing streaming';
+            const scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing streaming user-read-private';
             const authUrl = `https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(SPOTIFY_REDIRECT_URI)}&scope=${encodeURIComponent(scopes)}`;
             return {
                 statusCode: 200,
@@ -96,6 +96,26 @@ exports.handler = async (event) => {
                     'Content-Length': Buffer.byteLength(postData)
                 }
             }, postData);
+
+            return { statusCode: 200, headers, body: result.body };
+        }
+
+        // Get current user profile
+        if (action === 'me') {
+            const accessToken = event.headers.authorization?.replace('Bearer ', '');
+            
+            if (!accessToken) {
+                return { statusCode: 400, headers, body: JSON.stringify({ error: 'Missing token' }) };
+            }
+
+            const result = await httpsRequest({
+                hostname: 'api.spotify.com',
+                path: '/v1/me',
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            });
 
             return { statusCode: 200, headers, body: result.body };
         }
