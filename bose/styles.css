@@ -106,24 +106,27 @@ body {
     width: 100%;
     max-width: 100%;
     padding: 0 10px;
-    overflow: hidden;
 }
 
 .track-title {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 6px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: 100%;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .track-artist {
     font-size: 16px;
     color: var(--accent);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: 100%;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .track-source {
