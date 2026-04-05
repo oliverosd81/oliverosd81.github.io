@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bose SoundTouch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --bg-tertiary: #2c2c2e;
+            --text-primary: #ffffff;
+            --text-secondary: #8e8e93;
+            --accent: #fa2d48;
+            --accent-hover: #ff3b5c;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        /* Album Art / Speaker Icon */
+        .album-art {
+            width: 280px;
+            height: 280px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #2c2c2e 0%, #1c1c1e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .album-art::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(250, 45, 72, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .speaker-icon {
+            width: 120px;
+            height: 120px;
+            fill: var(--text-secondary);
+            z-index: 1;
+            transition: fill 0.3s ease;
+        }
+
+        .playing .speaker-icon {
+            fill: var(--accent);
+        }
+
+        .album-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Track Info */
+        .track-info {
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .track-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .track-artist {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .track-source {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--bg-tertiary);
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--text-secondary);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-times {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 10px 0;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.1s ease, opacity 0.2s ease;
+        }
+
+        .control-btn:hover {
+            opacity: 0.7;
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .control-btn svg {
+            fill: var(--text-primary);
+        }
+
+        .control-btn.secondary svg {
+            fill: var(--text-secondary);
+            width: 28px;
+            height: 28px;
+        }
+
+        .play-pause-btn {
+            width: 70px;
+            height: 70px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-pause-btn svg {
+            fill: var(--bg-primary);
+            width: 30px;
+            height: 30px;
+        }
+
+        .play-pause-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        /* Volume */
+        .volume-container {
+            width: 100%;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .volume-icon {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .volume-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 4px;
+            background: var(--bg-tertiary);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .volume-value {
+            font-size: 12px;
+            color: var(--text-secondary);
+            width: 35px;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Device Info */
+        .device-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--glass);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .device-indicator {
+            width: 8px;
+            height: 8px;
+            background: #30d158;
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        .device-indicator.offline {
+            background: var(--text-secondary);
+            animation: none;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .device-name {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .device-name span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Power Button */
+        .power-container {
+            margin-top: 10px;
+        }
+
+        .power-btn {
+            background: var(--bg-tertiary);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .power-btn:hover {
+            background: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .power-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Loading State */
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid var(--glass-border);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 440px) {
+            .album-art {
+                width: 240px;
+                height: 240px;
+            }
+
+            .track-title {
+                font-size: 20px;
+            }
+
+            .track-artist {
+                font-size: 16px;
+            }
+
+            .controls {
+                gap: 30px;
+            }
+
+            .play-pause-btn {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Album Art -->
+        <div class="album-art" id="albumArt">
+            <svg class="speaker-icon" viewBox="0 0 24 24">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6zm-2 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+            </svg>
+        </div>
+
+        <!-- Track Info -->
+        <div class="track-info">
+            <div class="track-title" id="trackTitle">Bose SoundTouch</div>
+            <div class="track-artist" id="trackArtist">Conectando...</div>
+            <div class="track-source" id="trackSource">—</div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-times">
+                <span id="currentTime">0:00</span>
+                <span id="totalTime">0:00</span>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="control-btn secondary" id="prevBtn" title="Anterior">
+                <svg viewBox="0 0 24 24" width="28" height="28">
+                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                </svg>
+            </button>
+
+            <button class="control-btn play-pause-btn" id="playPauseBtn" title="Reproducir/Pausar">
+                <svg viewBox="0 0 24 24" id="playIcon">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                <svg viewBox="0 0 24 24" id="pauseIcon" style="display: none;">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+            </button>
+
+            <button class="control-btn secondary" id="nextBtn" title="Siguiente">
+                <svg viewBox="0 0 24 24" width="28" height="28">
+                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Volume -->
+        <div class="volume-container">
+            <svg class="volume-icon" viewBox="0 0 24 24" id="volumeIcon">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+            <span class="volume-value" id="volumeValue">50%</span>
+        </div>
+
+        <!-- Device Info -->
+        <div class="device-info">
+            <div class="device-indicator" id="deviceIndicator"></div>
+            <div class="device-name">
+                <span id="deviceName">Bose</span> · SoundTouch
+            </div>
+        </div>
+
+        <!-- Power Button -->
+        <div class="power-container">
+            <button class="power-btn" id="powerBtn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"/>
+                </svg>
+                Apagar
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // API via Netlify Function (protege ALEXA_ID)
+        const API_BASE = '/.netlify/functions/bose';
+        
+        // State
+        let isPlaying = false;
+        let currentVolume = 50;
+        let speakerName = 'Bose';
+        let updateInterval;
+
+        // Elements
+        const albumArt = document.getElementById('albumArt');
+        const trackTitle = document.getElementById('trackTitle');
+        const trackArtist = document.getElementById('trackArtist');
+        const trackSource = document.getElementById('trackSource');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeValue = document.getElementById('volumeValue');
+        const deviceIndicator = document.getElementById('deviceIndicator');
+        const deviceName = document.getElementById('deviceName');
+        const powerBtn = document.getElementById('powerBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressFill = document.getElementById('progressFill');
+        const currentTime = document.getElementById('currentTime');
+        const totalTime = document.getElementById('totalTime');
+        const toast = document.getElementById('toast');
+
+        // API Functions
+        async function sendCommand(command) {
+            try {
+                const url = `${API_BASE}?action=command&speaker=${encodeURIComponent(speakerName)}&cmd=${encodeURIComponent(command)}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Error de conexión');
+                return null;
+            }
+        }
+
+        async function getHomeState() {
+            try {
+                const response = await fetch(`${API_BASE}?action=state`);
+                const data = await response.json();
+                deviceIndicator.classList.remove('offline');
+                return data;
+            } catch (error) {
+                console.error('Error:', error);
+                deviceIndicator.classList.add('offline');
+                return null;
+            }
+        }
+
+        // Update UI
+        async function updateNowPlaying() {
+            const homeState = await getHomeState();
+            
+            if (homeState && homeState.currentState && homeState.currentState.speakers) {
+                const speakers = homeState.currentState.speakers;
+                const speakerKey = Object.keys(speakers)[0];
+                
+                if (speakerKey) {
+                    const speaker = speakers[speakerKey];
+                    speakerName = speaker.name || 'Bose';
+                    deviceName.textContent = speakerName;
+
+                    // Update volume
+                    if (speaker.currentVolume) {
+                        currentVolume = parseInt(speaker.currentVolume);
+                        volumeSlider.value = currentVolume;
+                        volumeValue.textContent = `${currentVolume}%`;
+                    }
+
+                    // Update now playing
+                    if (speaker.nowPlaying) {
+                        const np = speaker.nowPlaying;
+                        const source = np.source || (np.$ && np.$.source) || 'UNKNOWN';
+
+                        isPlaying = np.playStatus === 'PLAY_STATE';
+                        updatePlayPauseButton();
+
+                        if (source === 'STANDBY' || source === 'INVALID_SOURCE') {
+                            trackTitle.textContent = 'Bose SoundTouch';
+                            trackArtist.textContent = 'Sin reproducir';
+                            trackSource.textContent = '—';
+                            albumArt.classList.remove('playing');
+                            progressContainer.style.display = 'none';
+                            resetAlbumArt();
+                        } else {
+                            const title = np.track || np.stationName || (np.ContentItem && np.ContentItem.itemName) || 'Reproduciendo';
+                            const artist = np.artist || np.description || formatSource(source);
+                            
+                            trackTitle.textContent = title;
+                            trackArtist.textContent = artist;
+                            trackSource.textContent = formatSource(source);
+                            
+                            if (isPlaying) {
+                                albumArt.classList.add('playing');
+                            } else {
+                                albumArt.classList.remove('playing');
+                            }
+
+                            if (np.time) {
+                                const current = parseInt(np.time.elapsed || np.time.$t || 0);
+                                const total = parseInt(np.time.total || 0);
+                                
+                                if (total > 0) {
+                                    progressContainer.style.display = 'block';
+                                    const percent = (current / total) * 100;
+                                    progressFill.style.width = `${percent}%`;
+                                    currentTime.textContent = formatTime(current);
+                                    totalTime.textContent = formatTime(total);
+                                } else {
+                                    progressContainer.style.display = 'none';
+                                }
+                            } else {
+                                progressContainer.style.display = 'none';
+                            }
+
+                            if (np.art) {
+                                const artUrl = np.art.$t || np.art.link || np.art._ || np.art;
+                                if (artUrl && typeof artUrl === 'string' && artUrl.startsWith('http')) {
+                                    albumArt.innerHTML = `<img src="${artUrl}" alt="Album Art" onerror="resetAlbumArt()">`;
+                                } else {
+                                    resetAlbumArt();
+                                }
+                            } else {
+                                resetAlbumArt();
+                            }
+                        }
+                    } else {
+                        trackTitle.textContent = 'Bose SoundTouch';
+                        trackArtist.textContent = 'Sin reproducir';
+                        trackSource.textContent = '—';
+                        resetAlbumArt();
+                    }
+                }
+            } else {
+                deviceIndicator.classList.add('offline');
+                trackTitle.textContent = 'Bose SoundTouch';
+                trackArtist.textContent = 'Desconectado';
+                trackSource.textContent = '—';
+            }
+        }
+
+        function resetAlbumArt() {
+            albumArt.innerHTML = `
+                <svg class="speaker-icon" viewBox="0 0 24 24">
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6zm-2 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+                </svg>
+            `;
+        }
+
+        function updatePlayPauseButton() {
+            if (isPlaying) {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        function formatSource(source) {
+            const sources = {
+                'SPOTIFY': 'Spotify',
+                'BLUETOOTH': 'Bluetooth',
+                'AUX': 'AUX',
+                'AIRPLAY': 'AirPlay',
+                'INTERNET_RADIO': 'Radio',
+                'STORED_MUSIC': 'Música',
+                'DEEZER': 'Deezer',
+                'AMAZON': 'Amazon Music',
+                'TUNEIN': 'TuneIn'
+            };
+            return sources[source] || source;
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // Event Handlers
+        playPauseBtn.addEventListener('click', async () => {
+            if (isPlaying) {
+                await sendCommand('/key/pause');
+                showToast('Pausado');
+            } else {
+                await sendCommand('/key/play');
+                showToast('Reproduciendo');
+            }
+            isPlaying = !isPlaying;
+            updatePlayPauseButton();
+        });
+
+        prevBtn.addEventListener('click', async () => {
+            await sendCommand('/key/prev_track');
+            showToast('Canción anterior');
+            setTimeout(updateNowPlaying, 1000);
+        });
+
+        nextBtn.addEventListener('click', async () => {
+            await sendCommand('/key/next_track');
+            showToast('Siguiente canción');
+            setTimeout(updateNowPlaying, 1000);
+        });
+
+        let volumeTimeout;
+        volumeSlider.addEventListener('input', (e) => {
+            const value = e.target.value;
+            volumeValue.textContent = `${value}%`;
+            
+            clearTimeout(volumeTimeout);
+            volumeTimeout = setTimeout(async () => {
+                await sendCommand(`/volume/${value}`);
+                showToast(`Volumen: ${value}%`);
+            }, 300);
+        });
+
+        powerBtn.addEventListener('click', async () => {
+            await sendCommand('/key/power');
+            showToast('Apagando...');
+            setTimeout(updateNowPlaying, 1500);
+        });
+
+        // Initialize
+        async function init() {
+            await updateNowPlaying();
+            updateInterval = setInterval(() => {
+                updateNowPlaying();
+            }, 5000);
+        }
+
+        init();
+
+        window.addEventListener('beforeunload', () => {
+            clearInterval(updateInterval);
+        });
+    </script>
+</body>
+</html>
