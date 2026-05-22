@@ -353,8 +353,13 @@ h5 {
 
 .tec-used {
 	position: absolute;
-	bottom: 40px;
-	right: 40px;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	flex-wrap: wrap;
 	z-index: 20;
 	pointer-events: none;
 }

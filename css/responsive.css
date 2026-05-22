@@ -185,8 +185,9 @@
     }
 
     .tec-used {
-        bottom: 30px;
-        right: 30px;
+        bottom: 15px;
+        left: 0;
+        right: 0;
     }
 }
 
